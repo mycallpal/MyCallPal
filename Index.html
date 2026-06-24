@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head script async src="https://tally.so/widgets/embed.js"></script>>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Call Pal | Never Miss Another Customer Call</title>
+<meta name="description" content="AI receptionist for tradespeople and small businesses across the UK. Answers your calls, captures every lead, texts you instantly. From £39/month.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:   #0A1628;
+    --teal:   #00C2A8;
+    --teal2:  #00A08A;
+    --white:  #FFFFFF;
+    --off:    #F7F9FB;
+    --grey:   #8A96A3;
+    --dark:   #1E2D40;
+    --warn:   #FF5A36;
+    --border: #E2E8EF;
+    --mono:   'JetBrains Mono', monospace;
+    --sans:   'Inter', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--white);
+    color: var(--navy);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,22,40,0.97);
+    backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%;
+    height: 64px;
+    border-bottom: 1px solid rgba(0,194,168,0.2);
+  }
+  .nav-logo {
+    font-size: 1.1rem; font-weight: 800; color: var(--white);
+    letter-spacing: -0.02em;
+  }
+  .nav-logo span { color: var(--teal); }
+  .nav-cta {
+    background: var(--teal); color: var(--navy);
+    padding: 0.5rem 1.25rem; border-radius: 6px;
+    font-weight: 700; font-size: 0.875rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--teal2); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; align-items: center;
+    padding: 120px 5% 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(0,194,168,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -100px; left: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(0,194,168,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 780px;
+    position: relative; z-index: 1;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(0,194,168,0.1);
+    border: 1px solid rgba(0,194,168,0.3);
+    color: var(--teal);
+    font-size: 0.8rem; font-weight: 700;
+    padding: 0.35rem 0.85rem; border-radius: 100px;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    margin-bottom: 1.75rem;
+  }
+  .hero-tag::before { content: '●'; font-size: 0.5rem; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  h1 {
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+  h1 em {
+    font-style: normal;
+    color: var(--teal);
+  }
+  .hero-sub {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: #8A96A3;
+    max-width: 560px;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+  }
+  .hero-sub strong { color: var(--white); font-weight: 600; }
+
+  .hero-actions {
+    display: flex; flex-wrap: wrap; gap: 1rem;
+    align-items: center;
+    margin-bottom: 3.5rem;
+  }
+  .btn-primary {
+    background: var(--teal); color: var(--navy);
+    padding: 0.9rem 2rem; border-radius: 8px;
+    font-weight: 800; font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+  }
+  .btn-primary:hover { background: var(--teal2); transform: translateY(-1px); }
+  .btn-secondary {
+    color: var(--white); font-weight: 600; font-size: 0.95rem;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    opacity: 0.7; transition: opacity 0.2s;
+  }
+  .btn-secondary:hover { opacity: 1; }
+
+  .hero-proof {
+    display: flex; flex-wrap: wrap; gap: 2rem;
+  }
+  .proof-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    color: #8A96A3; font-size: 0.875rem;
+  }
+  .proof-item::before { content: '✓'; color: var(--teal); font-weight: 700; }
+
+  /* ── TICKER ── */
+  .ticker {
+    background: var(--teal);
+    padding: 0.75rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .ticker-inner {
+    display: inline-flex; gap: 3rem;
+    animation: scroll 20s linear infinite;
+  }
+  @keyframes scroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .ticker-item {
+    font-size: 0.8rem; font-weight: 700;
+    color: var(--navy); text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: inline-flex; align-items: center; gap: 0.75rem;
+  }
+  .ticker-dot { width: 4px; height: 4px; background: var(--navy); border-radius: 50%; opacity: 0.4; }
+
+  /* ── SECTIONS ── */
+  section { padding: 96px 5%; }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.75rem; font-weight: 700;
+    color: var(--teal); text-transform: uppercase;
+    letter-spacing: 0.1em; margin-bottom: 1rem;
+  }
+  h2 {
+    font-size: clamp(1.8rem, 4vw, 2.75rem);
+    font-weight: 900; letter-spacing: -0.03em;
+    line-height: 1.1; margin-bottom: 1.25rem;
+  }
+  .section-sub {
+    font-size: 1.1rem; color: var(--grey);
+    max-width: 540px; line-height: 1.7;
+  }
+
+  /* ── PROBLEM ── */
+  .problem { background: var(--off); }
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .problem-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .problem-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; background: var(--warn);
+  }
+  .problem-icon {
+    font-size: 2rem; margin-bottom: 1rem;
+  }
+  .problem-card h3 {
+    font-size: 1.1rem; font-weight: 800;
+    margin-bottom: 0.6rem; letter-spacing: -0.02em;
+  }
+  .problem-card p { font-size: 0.95rem; color: var(--grey); line-height: 1.6; }
+
+  /* ── HOW IT WORKS ── */
+  .how { background: var(--navy); }
+  .how h2, .how .section-label { color: var(--white); }
+  .how .section-sub { color: #8A96A3; }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0; margin-top: 3.5rem;
+    position: relative;
+  }
+  .step {
+    padding: 2rem;
+    border-left: 1px solid rgba(255,255,255,0.07);
+    position: relative;
+  }
+  .step:first-child { border-left: none; }
+  .step-num {
+    font-family: var(--mono);
+    font-size: 0.7rem; font-weight: 700;
+    color: var(--teal); letter-spacing: 0.1em;
+    margin-bottom: 1.25rem;
+    display: block;
+  }
+  .step-icon {
+    width: 48px; height: 48px;
+    background: rgba(0,194,168,0.1);
+    border: 1px solid rgba(0,194,168,0.2);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; margin-bottom: 1.25rem;
+  }
+  .step h3 {
+    color: var(--white); font-size: 1.05rem;
+    font-weight: 700; margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+  .step p { color: #8A96A3; font-size: 0.9rem; line-height: 1.6; }
+
+  /* ── SMS PREVIEW ── */
+  .preview-section { background: var(--off); }
+  .preview-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+    margin-top: 3rem;
+  }
+  .preview-text h2 { margin-bottom: 1rem; }
+  .preview-list {
+    list-style: none; margin-top: 1.5rem;
+  }
+  .preview-list li {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.95rem; color: var(--grey);
+  }
+  .preview-list li:last-child { border-bottom: none; }
+  .preview-list li::before {
+    content: '✓';
+    color: var(--teal); font-weight: 700;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .sms-phone {
+    background: var(--navy);
+    border-radius: 24px;
+    padding: 2rem 1.5rem;
+    border: 6px solid #1E2D40;
+    box-shadow: 0 40px 80px rgba(10,22,40,0.2);
+    max-width: 320px; margin: 0 auto;
+  }
+  .sms-header {
+    text-align: center; margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .sms-header-name {
+    color: var(--white); font-weight: 700; font-size: 0.9rem;
+  }
+  .sms-header-sub {
+    color: #8A96A3; font-size: 0.75rem; margin-top: 0.2rem;
+  }
+  .sms-bubble {
+    background: #1E2D40;
+    border-radius: 16px 16px 16px 4px;
+    padding: 1rem 1.25rem;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: #C8D8E8;
+    line-height: 1.8;
+  }
+  .sms-bubble .sms-title {
+    color: var(--teal); font-weight: 700;
+    font-size: 0.75rem; margin-bottom: 0.5rem;
+    display: block;
+  }
+  .sms-field { color: #8A96A3; }
+  .sms-value { color: var(--white); }
+  .sms-urgent { color: var(--warn); font-weight: 700; }
+  .sms-time {
+    text-align: right; color: #8A96A3;
+    font-size: 0.7rem; margin-top: 0.75rem;
+    font-family: var(--sans);
+  }
+
+  /* ── PRICING ── */
+  .pricing { background: var(--white); }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem; margin-top: 3rem;
+    max-width: 720px;
+  }
+  .price-card {
+    border: 1px solid var(--border);
+    border-radius: 16px; padding: 2.5rem;
+    position: relative; overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .price-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(10,22,40,0.1); }
+  .price-card.featured {
+    background: var(--navy); border-color: var(--teal);
+  }
+  .featured-badge {
+    position: absolute; top: 1.25rem; right: 1.25rem;
+    background: var(--teal); color: var(--navy);
+    font-size: 0.7rem; font-weight: 800;
+    padding: 0.25rem 0.65rem; border-radius: 100px;
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .price-tier {
+    font-family: var(--mono); font-size: 0.75rem;
+    font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--teal);
+    margin-bottom: 0.5rem;
+  }
+  .price-name {
+    font-size: 1.3rem; font-weight: 800;
+    letter-spacing: -0.02em; margin-bottom: 0.25rem;
+  }
+  .price-card.featured .price-name { color: var(--white); }
+  .price-desc { font-size: 0.875rem; color: var(--grey); margin-bottom: 1.5rem; }
+  .price-amount {
+    display: flex; align-items: baseline; gap: 0.25rem;
+    margin-bottom: 0.35rem;
+  }
+  .price-currency { font-size: 1.3rem; font-weight: 700; color: var(--navy); }
+  .price-card.featured .price-currency { color: var(--white); }
+  .price-number {
+    font-size: 3.5rem; font-weight: 900;
+    letter-spacing: -0.04em; line-height: 1;
+    color: var(--navy);
+  }
+  .price-card.featured .price-number { color: var(--white); }
+  .price-period { font-size: 0.875rem; color: var(--grey); }
+  .price-mins {
+    font-family: var(--mono); font-size: 0.75rem;
+    color: var(--teal); margin-bottom: 1.75rem;
+  }
+  .price-features { list-style: none; margin-bottom: 2rem; }
+  .price-features li {
+    display: flex; align-items: flex-start; gap: 0.6rem;
+    font-size: 0.875rem; padding: 0.4rem 0;
+    color: var(--grey);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  .price-card.featured .price-features li {
+    color: #8A96A3;
+    border-bottom-color: rgba(255,255,255,0.06);
+  }
+  .price-features li::before {
+    content: '✓'; color: var(--teal);
+    font-weight: 700; flex-shrink: 0; margin-top: 1px;
+  }
+  .price-features li:last-child { border-bottom: none; }
+  .price-addon {
+    background: rgba(0,194,168,0.08);
+    border: 1px solid rgba(0,194,168,0.2);
+    border-radius: 8px; padding: 0.75rem 1rem;
+    font-size: 0.8rem; color: var(--teal);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+  .btn-price {
+    display: block; width: 100%;
+    text-align: center; text-decoration: none;
+    padding: 0.875rem; border-radius: 8px;
+    font-weight: 800; font-size: 0.95rem;
+    transition: all 0.2s;
+  }
+  .btn-price-outline {
+    border: 2px solid var(--navy); color: var(--navy);
+  }
+  .btn-price-outline:hover { background: var(--navy); color: var(--white); }
+  .btn-price-filled {
+    background: var(--teal); color: var(--navy);
+  }
+  .btn-price-filled:hover { background: var(--teal2); }
+
+  /* ── WHY ── */
+  .why { background: var(--off); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .why-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.75rem;
+  }
+  .why-icon { font-size: 1.75rem; margin-bottom: 1rem; }
+  .why-card h3 {
+    font-size: 1rem; font-weight: 800;
+    margin-bottom: 0.5rem; letter-spacing: -0.02em;
+  }
+  .why-card p { font-size: 0.875rem; color: var(--grey); line-height: 1.6; }
+
+  /* ── FAQ ── */
+  .faq { background: var(--white); }
+  .faq-list { margin-top: 3rem; max-width: 680px; }
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 0;
+  }
+  .faq-item:first-child { border-top: 1px solid var(--border); }
+  .faq-q {
+    font-size: 1rem; font-weight: 700;
+    margin-bottom: 0.6rem; letter-spacing: -0.01em;
+  }
+  .faq-a { font-size: 0.9rem; color: var(--grey); line-height: 1.7; }
+
+  /* ── CTA BAND ── */
+  .cta-band {
+    background: var(--teal);
+    padding: 80px 5%; text-align: center;
+  }
+  .cta-band h2 {
+    color: var(--navy); font-size: clamp(1.8rem, 4vw, 2.75rem);
+    margin-bottom: 1rem;
+  }
+  .cta-band p {
+    color: rgba(10,22,40,0.65); font-size: 1.1rem;
+    margin-bottom: 2rem; max-width: 480px; margin-left: auto; margin-right: auto;
+  }
+  .btn-dark {
+    background: var(--navy); color: var(--white);
+    padding: 1rem 2.5rem; border-radius: 8px;
+    font-weight: 800; font-size: 1rem;
+    text-decoration: none; display: inline-block;
+    transition: all 0.2s;
+  }
+  .btn-dark:hover { background: var(--dark); transform: translateY(-1px); }
+
+  /* ── CONTACT FORM ── */
+  .contact { background: var(--off); }
+  .contact-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem; align-items: start;
+    margin-top: 3rem;
+  }
+  .contact-info h2 { margin-bottom: 1rem; }
+  .contact-info p { color: var(--grey); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; }
+  .contact-detail {
+    display: flex; align-items: center; gap: 0.75rem;
+    font-size: 0.9rem; color: var(--navy);
+    margin-bottom: 0.75rem; font-weight: 600;
+  }
+  .contact-detail span { color: var(--teal); font-size: 1.1rem; }
+
+  form { display: flex; flex-direction: column; gap: 1rem; }
+  label { font-size: 0.8rem; font-weight: 700; color: var(--navy); margin-bottom: 0.25rem; display: block; text-transform: uppercase; letter-spacing: 0.05em; }
+  input, select, textarea {
+    width: 100%; padding: 0.85rem 1rem;
+    border: 1.5px solid var(--border); border-radius: 8px;
+    font-family: var(--sans); font-size: 0.95rem; color: var(--navy);
+    background: var(--white); outline: none;
+    transition: border-color 0.2s;
+  }
+  input:focus, select:focus, textarea:focus { border-color: var(--teal); }
+  textarea { resize: vertical; min-height: 100px; }
+  .form-group { display: flex; flex-direction: column; }
+  .btn-submit {
+    background: var(--teal); color: var(--navy);
+    padding: 0.9rem; border-radius: 8px;
+    font-weight: 800; font-size: 1rem;
+    border: none; cursor: pointer;
+    transition: all 0.2s; margin-top: 0.5rem;
+  }
+  .btn-submit:hover { background: var(--teal2); transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    padding: 3rem 5%;
+    display: flex; flex-wrap: wrap;
+    justify-content: space-between; align-items: center;
+    gap: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+  .footer-logo { font-size: 1rem; font-weight: 800; color: var(--white); }
+  .footer-logo span { color: var(--teal); }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { color: #8A96A3; font-size: 0.85rem; text-decoration: none; }
+  .footer-links a:hover { color: var(--white); }
+  .footer-copy { color: #8A96A3; font-size: 0.8rem; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    section { padding: 64px 5%; }
+    .preview-wrap { grid-template-columns: 1fr; }
+    .contact-wrap { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
+    .step { border-left: none; border-top: 1px solid rgba(255,255,255,0.07); }
+    .step:first-child { border-top: none; }
+    nav { padding: 0 4%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-inner { animation: none; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">My Call <span>Pal</span></div>
+  <a href="#pricing" class="nav-cta">Get Started</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">AI Receptionist for UK Trades & Small Business</div>
+    <h1>Every missed call<br>is a <em>lost job.</em></h1>
+    <p class="hero-sub">
+      My Call Pal answers your calls <strong>in your business name</strong>, captures every lead, and texts you the details instantly — so you never lose another customer while you're on the tools.
+    </p>
+    <div class="hero-actions">
+      <a href="#pricing" class="btn-primary">Get Started — From £39/month →</a>
+      <a href="#how" class="btn-secondary">See how it works ↓</a>
+    </div>
+    <div class="hero-proof">
+      <span class="proof-item">No setup fees</span>
+      <span class="proof-item">Live in 24 hours</span>
+      <span class="proof-item">No long contracts</span>
+      <span class="proof-item">UK based support</span>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">Plumbers <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Electricians <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Builders <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Roofers <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Landscapers <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Cleaners <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Garage Owners <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Estate Agents <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Property Managers <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Plumbers <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Electricians <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Builders <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Roofers <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Landscapers <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Cleaners <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Garage Owners <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Estate Agents <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Property Managers <span class="ticker-dot"></span></span>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <p class="section-label">The Problem</p>
+  <h2>Sound familiar?</h2>
+  <p class="section-sub">You're out on the tools. Your phone rings. You can't answer. That customer calls someone else.</p>
+  <div class="problem-grid">
+    <div class="problem-card">
+      <div class="problem-icon">📵</div>
+      <h3>You can't answer every call</h3>
+      <p>You're on a roof, under a sink, or driving between jobs. Calls get missed. Voicemails don't get returned. Customers move on.</p>
+    </div>
+    <div class="problem-card">
+      <div class="problem-icon">💸</div>
+      <h3>Missed calls cost real money</h3>
+      <p>One missed quote call could be worth £500. Miss three a week and you're losing over £75,000 a year in potential work.</p>
+    </div>
+    <div class="problem-card">
+      <div class="problem-icon">👤</div>
+      <h3>You can't afford a full-time receptionist</h3>
+      <p>A full-time receptionist costs £25,000+ a year. You don't need that overhead — you just need your calls answered.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <p class="section-label">How It Works</p>
+  <h2>Simple as it gets.</h2>
+  <p class="section-sub">Three things happen every time someone calls your number. All of it automatic. None of it needs you.</p>
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">STEP 01</span>
+      <div class="step-icon">📞</div>
+      <h3>Your number gets called</h3>
+      <p>The customer calls your normal business number and you dont answer My Call Pal answers immediately — in your business name — every time.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">STEP 02</span>
+      <div class="step-icon">🤖</div>
+      <h3>AI handles the conversation</h3>
+      <p>Your AI receptionist chats naturally with the caller. Gets their name, number, what they need, how urgent it is. Sounds professional. Never robotic.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">STEP 03</span>
+      <div class="step-icon">📱</div>
+      <h3>You get a text instantly</h3>
+      <p>The moment the call ends, you get an SMS with every detail. Caller name, number, job type, urgency. Call them back when you're ready.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">STEP 04</span>
+      <div class="step-icon">✅</div>
+      <h3>You win the job</h3>
+      <p>You call back fast, while your competitor's phone is still ringing. That's how you win more work without changing anything else.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SMS PREVIEW -->
+<section class="preview-section">
+  <div class="preview-wrap">
+    <div class="preview-text">
+      <p class="section-label">What You Receive</p>
+      <h2>Every detail. Right to your phone.</h2>
+      <p class="section-sub">The moment a call ends, you get an SMS with everything you need to call back and win the job.</p>
+      <ul class="preview-list">
+        <li>Caller's full name and phone number</li>
+        <li>What the job is and how urgent it is</li>
+        <li>Their location or area</li>
+        <li>A plain English summary of the call</li>
+        <li>Emergency jobs flagged immediately</li>
+        <li>Out of hours calls marked separately</li>
+      </ul>
+    </div>
+    <div>
+      <div class="sms-phone">
+        <div class="sms-header">
+          <div class="sms-header-name">My Call Pal</div>
+          <div class="sms-header-sub">now</div>
+        </div>
+        <div class="sms-bubble">
+          <span class="sms-title">📞 NEW CALL — MyCallPal</span>
+          <span class="sms-urgent">🚨 URGENT 🚨</span><br><br>
+          <span class="sms-field">Caller: </span><span class="sms-value">John Smith</span><br>
+          <span class="sms-field">Number: </span><span class="sms-value">0777788051</span><br>
+          <span class="sms-field">Job: </span><span class="sms-value">Emergency</span><br>
+          <span class="sms-field">Area: </span><span class="sms-value">Falkirk, FK2</span><br><br>
+          <span class="sms-field">Summary: </span><span class="sms-value">Burst pipe in kitchen, water coming through ceiling. Needs someone urgently.</span><br><br>
+          <span style="color:#8A96A3">— MyCallPal</span>
+        </div>
+        <div class="sms-time">Delivered ✓✓</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <p class="section-label">Pricing</p>
+  <h2>Straightforward pricing.<br>No hidden fees.</h2>
+  <p class="section-sub">Pick the plan that fits. No setup fees. No long contracts. Cancel any time.</p>
+  <div class="pricing-grid">
+
+    <div class="price-card">
+      <div class="price-tier">Tier 1</div>
+      <div class="price-name">Essential</div>
+      <div class="price-desc">Everything you need to stop missing calls.</div>
+      <div class="price-amount">
+        <span class="price-currency">£</span>
+        <span class="price-number">39</span>
+        <span class="price-period">/month</span>
+      </div>
+      <div class="price-mins">100 minutes included · 35p/min after</div>
+      <ul class="price-features">
+        <li>AI answers in your business name</li>
+        <li>SMS summary after every call</li>
+        <li>Job type and urgency detection</li>
+        <li>Emergency call flagging</li>
+        <li>Missed call text-back</li>
+        <li>Call recording included</li>
+        <li>GDPR consent capture</li>
+        <li>Weekly call summary email</li>
+      </ul>
+      <div class="price-addon">➕ Add out of hours cover for £9.99/month</div>
+      <a href="https://buy.stripe.com/eVqeVd8JrfLM5b51WU8so00" class="btn-price btn-price-outline">Get Started</a>
+    </div>
+
+    <div class="price-card featured">
+      <div class="featured-badge">Most Popular</div>
+      <div class="price-tier">Tier 2</div>
+      <div class="price-name">Professional</div>
+      <div class="price-desc">Your AI receptionist, fully equipped.</div>
+      <div class="price-amount">
+        <span class="price-currency">£</span>
+        <span class="price-number">69</span>
+        <span class="price-period">/month</span>
+      </div>
+      <div class="price-mins">200 minutes included · 30p/min after</div>
+      <ul class="price-features">
+        <li>Everything in Essential, plus:</li>
+        <li>Postcode capture and lookup</li>
+        <li>Returning caller recognition</li>
+        <li>Diary and callback booking</li>
+        <li>WhatsApp delivery option</li>
+        <li>Structured job summaries</li>
+        <li>Priority SMS formatting</li>
+        <li>Callback time scheduling</li>
+      </ul>
+      <div class="price-addon">➕ Add out of hours cover for £9.99/month</div>
+      <a <div>
+  <div>
+  <a href="https://tally.so/r/pb5EpJ" 
+     class="btn-price btn-price-filled" 
+     data-tally-open="pb5EpJ" 
+     data-tally-emoji-text="👋" 
+     data-tally-emoji-animation="wave" 
+     data-tally-layout="modal">
+    Get Started
+  </a>
+</div>
+
+  <script async src="https://tally.so/widgets/embed.js"></script>
+</div>
+class="btn-price btn-price-filled">Get Started</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why">
+  <p class="section-label">Why My Call Pal</p>
+  <h2>Built for trades.<br>Not call centres.</h2>
+  <p class="section-sub">Most answering services are built for offices. My Call Pal is built for people who work with their hands.</p>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">⚡</div>
+      <h3>Live in 24 hours</h3>
+      <p>We set everything up for you. Your number is live and answering calls within one working day.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🎙️</div>
+      <h3>Sounds human</h3>
+      <p>Not a robot. Not a phone menu. A natural, professional voice that handles real conversations.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🌙</div>
+      <h3>Works out of hours</h3>
+      <p>Add out of hours cover for £9.99/month and never miss an emergency call at 9pm again.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">📋</div>
+      <h3>No long contracts</h3>
+      <p>Month to month. If it's not working for you, cancel. No awkward conversations, no fees.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🔒</div>
+      <h3>GDPR compliant</h3>
+      <p>Every call captures verbal consent before any details are recorded. Fully compliant out of the box.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🇬🇧</div>
+      <h3>UK built and supported</h3>
+      <p>My Call Pal is a UK business. Support comes from a real person who built the system.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <p class="section-label">Questions</p>
+  <h2>Straight answers.</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">Do I need to change my phone number?</div>
+      <div class="faq-a">No. You get a new dedicated number that My Call Pal answers. You keep your existing number exactly as it is. Most customers forward their existing number to the My Call Pal number during working hours.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does it actually sound natural?</div>
+      <div class="faq-a">Yes. The AI uses advanced voice technology designed to sound human. It handles interruptions, natural pauses, and unexpected answers — not a rigid phone menu.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What happens if I go over my minutes?</div>
+      <div class="faq-a">Calls continue as normal. You are charged at your tier's overage rate (35p/min on Essential, 30p/min on Professional). You will receive an SMS alert when you reach 80% and 100% of your allowance.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can it handle emergency calls differently?</div>
+      <div class="faq-a">Yes. The AI detects emergency language and flags those calls immediately in your SMS with a clear urgent marker. You see it the moment the call ends.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How quickly does the text arrive?</div>
+      <div class="faq-a">Within 30 seconds of the call ending. By the time you've finished what you're doing, the details are already on your phone.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What if I want to cancel?</div>
+      <div class="faq-a">Just let us know. No notice period, no cancellation fees. We'd rather you be happy than locked in.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <h2>Stop losing jobs to missed calls.</h2>
+  <p>Get set up today. Your AI receptionist can be live and answering calls tomorrow.</p>
+  <a href="#pricing" class="btn-dark">Get Started — From £39/month</a>
+</div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <p class="section-label">Get Started</p>
+      <h2>Let's get your calls answered.</h2>
+      <p>Fill in the form and we'll be in touch within a few hours to get you set up. Most customers are live within 24 hours.</p>
+      <div class="contact-detail"><span>📧</span> hello@mycallpal.co.uk</div>
+      <div class="contact-detail"><span>🇬🇧</span> UK based — we actually reply</div>
+      <div class="contact-detail"><span>⚡</span> Live within 24 hours of signing up</div>
+    </div>
+    <iframe data-tally-src="https://tally.so/embed/VLNRry?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="492" frameborder="0" marginheight="0" marginwidth="0" title="Hear Your AI Receptionist Live 📞"></iframe>
+    <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+  </div>
+</section>
+
+<!-- PROMO BANNER -->
+<div style="background: linear-gradient(135deg, #0A1628 0%, #1E2D40 100%); padding: 60px 5%; text-align: center; border-top: 3px solid #00C2A8; border-bottom: 3px solid #00C2A8; position: relative; overflow: hidden;">
+  <div style="position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(0,194,168,0.15) 0%, transparent 70%); pointer-events: none;"></div>
+  <div style="position: absolute; bottom: -60px; left: -60px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(0,194,168,0.1) 0%, transparent 70%); pointer-events: none;"></div>
+  <div style="display: inline-block; background: #00C2A8; color: #0A1628; font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 800; padding: 0.3rem 0.9rem; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.25rem;">Limited Launch Offer</div>
+  <h2 style="font-family: 'Inter', sans-serif; font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 900; color: #FFFFFF; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 0.75rem;">50% off your setup fee.<br><span style="color: #00C2A8;">This month only.</span></h2>
+  <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #8A96A3; max-width: 480px; margin: 0 auto 0.75rem; line-height: 1.7;">We're onboarding our first customers and to celebrate, we're cutting our one-time setup fee in half. Get your AI receptionist live for less use code STARTUP50.</p>
+  <p style="font-family: 'Inter', sans-serif; font-size: 0.875rem; color: #00C2A8; font-weight: 700; margin-bottom: 1.75rem;">Normal setup fee: £99 &nbsp;→&nbsp; <span style="text-decoration: line-through; opacity: 0.5; color: #8A96A3;">£99</span>&nbsp; <span style="font-size: 1.2rem; color: #FFFFFF;">£49 today</span></p>
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
+    <a href="#pricing" style="background: #00C2A8; color: #0A1628; padding: 0.9rem 2rem; border-radius: 8px; font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1rem; text-decoration: none; display: inline-block;">Claim Offer — Choose Your Plan →</a>
+    <a href="#contact" style="color: #8A96A3; padding: 0.9rem 1rem; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center;">Got a question? Get in touch ↓</a>
+  </div>
+  <p style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #4A5568; margin-top: 1.25rem;">Offer available to new customers only.Use code STARTUP50 at checkout.</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">My Call <span>Pal</span> Ltd</div>
+  <div class="footer-links">
+    <a href="#pricing">Pricing</a>
+    <a href="#how">How It Works</a>
+    <a href="#contact">Contact</a>
+    <a href="#">Privacy Policy</a>
+  </div>
+  <div class="footer-copy">© 2026 My Call Pal Ltd. Registered in Scotland.</div>
+</footer>
+
+</body>
+</html>
