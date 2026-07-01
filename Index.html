@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Call Pal | Never Miss Another Customer Call</title>
-<meta name="description" content="AI receptionist for tradespeople and small businesses across the UK. Answers your calls, captures every lead, texts you instantly. From £39/month.">
+<meta name="description" content="Call answering and business growth service for UK tradespeople and small businesses. Never miss another customer call. From £59/month.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -399,6 +399,11 @@
     margin-bottom: 1.5rem;
     font-weight: 600;
   }
+  .price-setup-note {
+    font-size: 0.8rem; color: var(--grey);
+    margin-bottom: 0.75rem; text-align: center;
+  }
+  .price-card.featured .price-setup-note { color: #8A96A3; }
   .btn-price {
     display: block; width: 100%;
     text-align: center; text-decoration: none;
@@ -538,6 +543,49 @@
     .ticker-inner { animation: none; }
     * { transition: none !important; }
   }
+
+  /* ── COST COMPARISON ── */
+  .comparison { background: var(--navy); }
+  .comparison h2, .comparison .section-label { color: var(--white); }
+  .comparison .section-sub { color: #8A96A3; }
+  .compare-table {
+    width: 100%; margin-top: 3rem;
+    border-collapse: collapse; border-radius: 16px; overflow: hidden;
+  }
+  .compare-table th {
+    padding: 1rem 1.5rem; text-align: left;
+    font-family: var(--mono); font-size: 0.7rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    background: rgba(255,255,255,0.05); color: var(--grey);
+  }
+  .compare-table th:not(:first-child) { text-align: center; }
+  .compare-table td {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    font-size: 0.9rem; color: #C8D8E8; vertical-align: middle;
+  }
+  .compare-table td:not(:first-child) { text-align: center; }
+  .compare-table tr:hover td { background: rgba(255,255,255,0.03); }
+  .compare-table .row-label { font-weight: 600; color: var(--white); }
+  .compare-table .cost-bad { color: #FF5A36; font-weight: 700; font-size: 1rem; }
+  .compare-table .cost-good { color: var(--teal); font-weight: 800; font-size: 1rem; }
+  .compare-table .check { color: var(--teal); font-size: 1.1rem; }
+  .compare-table .cross { color: #FF5A36; font-size: 1.1rem; }
+  .compare-table .highlight-col { background: rgba(0,194,168,0.06); }
+  .compare-table th.highlight-col { background: rgba(0,194,168,0.15); color: var(--teal); }
+  .compare-saving {
+    margin-top: 2rem; padding: 1.5rem 2rem;
+    background: rgba(0,194,168,0.1);
+    border: 1px solid rgba(0,194,168,0.25);
+    border-radius: 12px; text-align: center;
+  }
+  .compare-saving p { font-size: 1.05rem; color: var(--white); line-height: 1.7; }
+  .compare-saving strong { color: var(--teal); font-size: 1.2rem; }
+  @media (max-width: 768px) {
+    .compare-table th, .compare-table td { padding: 0.75rem 0.75rem; font-size: 0.8rem; }
+    .compare-table .cost-bad, .compare-table .cost-good { font-size: 0.9rem; }
+  }
+
 </style>
 </head>
 <body>
@@ -551,13 +599,13 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-tag">AI Receptionist for UK Trades & Small Business</div>
+    <div class="hero-tag">Call Answering &amp; Business Growth for UK Trades</div>
     <h1>Every missed call<br>is a <em>lost job.</em></h1>
     <p class="hero-sub">
       My Call Pal answers your calls <strong>in your business name</strong>, captures every lead, and texts you the details instantly — so you never lose another customer while you're on the tools.
     </p>
     <div class="hero-actions">
-      <a href="#pricing" class="btn-primary">Get Started — From £39/month →</a>
+      <a href="#pricing" class="btn-primary">Get Started — From £59/month →</a>
       <a href="#how" class="btn-secondary">See how it works ↓</a>
     </div>
     <div class="hero-proof">
@@ -633,7 +681,7 @@
       <span class="step-num">STEP 02</span>
       <div class="step-icon">🤖</div>
       <h3>AI handles the conversation</h3>
-      <p>Your perosnalised AI receptionist chats naturally with the caller. Gets their name, number, what they need, how urgent it is. Sounds professional. Never robotic.</p>
+      <p>Your personalised AI handles the conversation naturally. Gets their name, number, what they need, how urgent it is. Sounds professional. Never robotic.</p>
     </div>
     <div class="step">
       <span class="step-num">STEP 03</span>
@@ -654,17 +702,18 @@
 <section class="preview-section">
   <div class="preview-wrap">
     <div class="preview-text">
-      <p class="section-label">What You Receive</p>
-      <h2>Every detail. Right to your phone.</h2>
-      <p class="section-sub">The moment a call ends, you get an SMS with everything you need to call back and win the job.</p>
+      <p class="section-label">Call Back Prepared. Win the Job.</p>
+      <h2>You already know the job before you dial.</h2>
+      <p class="section-sub">Before you return the call, you know their name, what they need, and exactly where they are. No awkward opening. No scrambling for a pen. Just a confident callback that sounds like you have a full office behind you.</p>
       <ul class="preview-list">
-        <li>Caller's full name and phone number</li>
-        <li>What the job is and how urgent it is</li>
-        <li>Their location or area</li>
-        <li>A plain English summary of the call</li>
-        <li>Emergency jobs flagged immediately</li>
+        <li>Caller's full name and phone number — ready to go</li>
+        <li>The job type and how urgent it is</li>
+        <li>Their location or area — so you know if it's worth the trip</li>
+        <li>A plain English summary of exactly what they said</li>
+        <li>Emergency jobs flagged immediately so you can prioritise</li>
         <li>Out of hours calls marked separately</li>
       </ul>
+      <p style="font-size:0.95rem;color:#4A5568;line-height:1.75;margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border);">And for your customer? They've already spoken to someone, given their details, and explained their problem. Their enquiry has started. They feel heard — and they're far less likely to call someone else while they wait for you.</p>
     </div>
     <div>
       <div class="sms-phone">
@@ -696,66 +745,146 @@
   <div class="pricing-grid">
 
     <div class="price-card">
-      <div class="price-tier">Tier 1</div>
-      <div class="price-name">Essential</div>
-      <div class="price-desc">Everything you need to stop missing calls.</div>
+      <div class="price-tier">Essential</div>
+      <div class="price-name">Never miss a call again.</div>
+      <div class="price-desc">Call answering that protects every job.</div>
       <div class="price-amount">
         <span class="price-currency">£</span>
-        <span class="price-number">39</span>
+        <span class="price-number">59</span>
         <span class="price-period">/month</span>
       </div>
-      <div class="price-mins">100 minutes included · 35p/min after</div>
+      <div class="price-mins">50 calls included · additional calls £1.20 each</div>
       <ul class="price-features">
-        <li>AI answers in your business name</li>
-       <li>Choose a Male or Female Receptionist</li>
-        <li>SMS summary after every call</li>
-        <li>Job type and urgency detection</li>
-        <li>Emergency call flagging</li>
-        <li>GDPR consent capture</li>
-       <li>Missed call text-back</li>        
-        <li>Weekly call summary email</li>
+        <li>Professional greeting customised entirely to your business name</li>
+        <li>Choose the voice that sounds right for your business</li>
+        <li>Instant SMS summary sent to your phone after every call</li>
+        <li>Emergency call detection and priority flagging</li>
+        <li>GDPR verbal consent captured on every call</li>
       </ul>
-      <div class="price-addon">➕ Add out of hours cover for £9.99/month</div>
+      <div class="price-addon">➕ Add 24/7 round-the-clock answering for just £20/month</div>
+      <div class="price-setup-note">One-time setup fee: £99</div>
       <a href="https://buy.stripe.com/eVqeVd8JrfLM5b51WU8so00?prefilled_promo_code=promo50" class="btn-price btn-price-outline">Get Started</a>
     </div>
 
     <div class="price-card featured">
       <div class="featured-badge">Most Popular</div>
-      <div class="price-tier">Tier 2</div>
-      <div class="price-name">Professional</div>
-      <div class="price-desc">Your AI receptionist, fully equipped.</div>
+      <div class="price-tier">Professional</div>
+      <div class="price-name">Built to help you grow.</div>
+      <div class="price-desc">Everything you need to take on more work.</div>
       <div class="price-amount">
         <span class="price-currency">£</span>
-        <span class="price-number">69</span>
+        <span class="price-number">99</span>
         <span class="price-period">/month</span>
       </div>
-      <div class="price-mins">200 minutes included · 30p/min after</div>
+      <div class="price-mins">100 calls included · additional calls £1.00 each</div>
       <ul class="price-features">
         <li>Everything in Essential, plus:</li>
-        <li>Postcode capture and lookup</li>
-        <li>Returning caller recognition</li>
-        <li>Diary and callback booking</li>
-        <li>WhatsApp delivery option</li>
-        <li>Structured job summaries</li>
-        <li>Priority SMS formatting</li>
-        <li>Callback time scheduling</li>
+        <li>Captures the exact address, every time — no more guessing where the job is</li>
+        <li>Remembers your regular customers and greets them by name</li>
+        <li>Sends your booking link directly to the caller after the call</li>
+        <li>Your choice of delivery — text or WhatsApp</li>
+        <li>Call summary email sent to you as well as SMS — a paper trail for every job</li>
+        <li>Monday morning call summary — see the week's calls at a glance</li>
       </ul>
-      <div class="price-addon">➕ Add out of hours cover for £9.99/month</div>
-      <a <div>
-  <div>
-  <a href="https://tally.so/r/pb5EpJ" 
-     class="btn-price btn-price-filled" 
-     data-tally-open="pb5EpJ" 
-     data-tally-emoji-text="👋" 
-     data-tally-emoji-animation="wave" 
-     data-tally-layout="modal">
-    Get Started
-  </a>
-</div>
+      <div class="price-addon">➕ Add 24/7 round-the-clock answering for just £20/month</div>
+      <div class="price-setup-note">One-time setup fee: £149</div>
+      <a href="https://tally.so/r/pb5EpJ" class="btn-price btn-price-filled" data-tally-open="pb5EpJ" data-tally-emoji-text="👋" data-tally-emoji-animation="wave" data-tally-layout="modal">Get Started</a>
+      <script async src="https://tally.so/widgets/embed.js"></script>
+    </div>
+</section>
 
-  <script async src="https://tally.so/widgets/embed.js"></script>
-</div>
 
+<!-- COST COMPARISON -->
+<section class="comparison" id="compare">
+  <p class="section-label">The Numbers Don't Lie</p>
+  <h2>My Call Pal vs the alternatives.</h2>
+  <p class="section-sub">See what you'd actually pay to get your calls answered properly — and what you'd be giving up.</p>
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>What you're comparing</th>
+        <th>Full-Time Receptionist</th>
+        <th>Traditional Answering Service</th>
+        <th class="highlight-col">My Call Pal Essential</th>
+        <th class="highlight-col">My Call Pal Professional</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="row-label">Monthly cost</td>
+        <td><span class="cost-bad">£2,000–£2,500</span></td>
+        <td><span class="cost-bad">£150–£400</span></td>
+        <td class="highlight-col"><span class="cost-good">£59</span></td>
+        <td class="highlight-col"><span class="cost-good">£99</span></td>
+      </tr>
+      <tr>
+        <td class="row-label">Setup cost</td>
+        <td><span class="cost-bad">£500–£2,000</span><br><span style="font-size:0.75rem;color:#8A96A3;">recruitment, training</span></td>
+        <td><span class="cost-bad">£100–£300</span></td>
+        <td class="highlight-col"><span class="cost-good">£99 one-time</span></td>
+        <td class="highlight-col"><span class="cost-good">£149 one-time</span></td>
+      </tr>
+      <tr>
+        <td class="row-label">Answers 24/7</td>
+        <td><span class="cross">✗</span> Office hours only</td>
+        <td><span class="check">✓</span> Extra cost</td>
+        <td class="highlight-col"><span class="check">✓</span> Add-on £20/mo</td>
+        <td class="highlight-col"><span class="check">✓</span> Add-on £30/mo</td>
+      </tr>
+      <tr>
+        <td class="row-label">Answers in your business name</td>
+        <td><span class="check">✓</span></td>
+        <td><span class="cross">✗</span> Generic greeting</td>
+        <td class="highlight-col"><span class="check">✓</span> Always</td>
+        <td class="highlight-col"><span class="check">✓</span> Always</td>
+      </tr>
+      <tr>
+        <td class="row-label">Instant SMS to your phone</td>
+        <td><span class="cross">✗</span> You call and ask</td>
+        <td><span class="cross">✗</span> Email next day</td>
+        <td class="highlight-col"><span class="check">✓</span> Within 30 seconds</td>
+        <td class="highlight-col"><span class="check">✓</span> Within 30 seconds</td>
+      </tr>
+      <tr>
+        <td class="row-label">Emergency call detection</td>
+        <td><span class="check">✓</span> If they ask</td>
+        <td><span class="cross">✗</span></td>
+        <td class="highlight-col"><span class="check">✓</span> Auto-flagged 🚨</td>
+        <td class="highlight-col"><span class="check">✓</span> Auto-flagged 🚨</td>
+      </tr>
+      <tr>
+        <td class="row-label">Live in 24 hours</td>
+        <td><span class="cross">✗</span> Weeks to hire</td>
+        <td><span class="cross">✗</span> 5–10 days setup</td>
+        <td class="highlight-col"><span class="check">✓</span></td>
+        <td class="highlight-col"><span class="check">✓</span></td>
+      </tr>
+      <tr>
+        <td class="row-label">No long contracts</td>
+        <td><span class="cross">✗</span> Employment law applies</td>
+        <td><span class="cross">✗</span> 12 month contracts</td>
+        <td class="highlight-col"><span class="check">✓</span> Month to month</td>
+        <td class="highlight-col"><span class="check">✓</span> Month to month</td>
+      </tr>
+      <tr>
+        <td class="row-label">GDPR compliant</td>
+        <td><span class="check">✓</span> If trained</td>
+        <td>⚠️ Varies</td>
+        <td class="highlight-col"><span class="check">✓</span> Built in</td>
+        <td class="highlight-col"><span class="check">✓</span> Built in</td>
+      </tr>
+      <tr>
+        <td class="row-label">Annual cost (approx)</td>
+        <td><span class="cost-bad">£25,000–£32,000</span></td>
+        <td><span class="cost-bad">£1,800–£5,000</span></td>
+        <td class="highlight-col"><span class="cost-good">From £708</span></td>
+        <td class="highlight-col"><span class="cost-good">From £1,188</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="compare-saving">
+    <p>A full-time receptionist costs up to <strong>£32,000 a year.</strong> My Call Pal Essential costs <strong>£708 a year.</strong><br>
+    That's a saving of over <strong>£31,000</strong> — and your calls still get answered every time.</p>
   </div>
 </section>
 
@@ -778,7 +907,7 @@
     <div class="why-card">
       <div class="why-icon">🌙</div>
       <h3>Works out of hours</h3>
-      <p>Add out of hours cover for £9.99/month and never miss an emergency call at 9pm again.</p>
+      <p>Add out of hours cover from £20/month and never miss an emergency call at 9pm again.</p>
     </div>
     <div class="why-card">
       <div class="why-icon">📋</div>
@@ -795,6 +924,11 @@
       <h3>UK built and supported</h3>
       <p>My Call Pal is a UK business. Support comes from a real person who built the system.</p>
     </div>
+    <div class="why-card">
+      <div class="why-icon">🏢</div>
+      <h3>Sounds like a bigger business</h3>
+      <p>One person or ten — every caller gets the same professional experience. My Call Pal makes your business sound established, organised, and ready to take the job.</p>
+    </div>
   </div>
 </section>
 
@@ -804,16 +938,20 @@
   <h2>Straight answers.</h2>
   <div class="faq-list">
     <div class="faq-item">
+      <div class="faq-q">What does my customer actually experience?</div>
+      <div class="faq-a">They call your number, it's answered promptly in your business name, someone takes their details and reassures them the team will be in touch shortly. It feels like calling a well-run company with a proper reception team. Most callers have no idea it's automated — they just know they were looked after. That matters, because a customer who feels heard is far less likely to call your competitor while they wait.</div>
+    </div>
+    <div class="faq-item">
       <div class="faq-q">Do I need to change my phone number?</div>
       <div class="faq-a">No. You get a new dedicated number that My Call Pal answers. You keep your existing number exactly as it is. Most customers forward their existing number to the My Call Pal number during working hours.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q">Does it actually sound natural?</div>
-      <div class="faq-a">Yes. The AI uses advanced voice technology designed to sound human. It handles interruptions, natural pauses, and unexpected answers — not a rigid phone menu.</div>
+      <div class="faq-a">Yes. It's powered by advanced voice technology designed to sound human, not robotic. It handles interruptions, natural pauses, and unexpected answers — not a rigid phone menu.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">What happens if I go over my minutes?</div>
-      <div class="faq-a">Calls continue as normal. You are charged at your tier's overage rate (35p/min on Essential, 30p/min on Professional). You will receive an SMS alert when you reach 80% and 100% of your allowance.</div>
+      <div class="faq-q">What happens if I go over my included calls?</div>
+      <div class="faq-a">Your calls are never cut off. If you go over your included calls, extra calls are simply charged at £1.20 each on Essential or £1.00 each on Professional. You'll never be left without cover — we'd rather bill you a little extra than risk you missing a job.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q">Can it handle emergency calls differently?</div>
@@ -833,8 +971,8 @@
 <!-- CTA BAND -->
 <div class="cta-band">
   <h2>Stop losing jobs to missed calls.</h2>
-  <p>Get set up today. Your AI receptionist can be live and answering calls tomorrow.</p>
-  <a href="#pricing" class="btn-dark">Get Started — From £39/month</a>
+  <p>Get set up today. Your calls can be answered and your jobs protected by tomorrow.</p>
+  <a href="#pricing" class="btn-dark">Get Started — From £59/month</a>
 </div>
 
 <!-- CONTACT -->
@@ -844,6 +982,8 @@
       <p class="section-label">Get Started</p>
       <h2>Let's get your calls answered.</h2>
       <p>Fill in the form and we'll be in touch within a few hours to get you set up. Most customers are live within 24 hours.</p>
+      <div class="contact-detail"><span>👤</span> Dave — Founder, My Call Pal Ltd</div>
+      <div class="contact-detail"><span>📞</span> 07895 579967</div>
       <div class="contact-detail"><span>📧</span> hello@mycallpal.co.uk</div>
       <div class="contact-detail"><span>🇬🇧</span> UK based — we actually reply</div>
       <div class="contact-detail"><span>⚡</span> Live within 24 hours of signing up</div>
@@ -859,7 +999,7 @@
   <div style="position: absolute; bottom: -60px; left: -60px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(0,194,168,0.1) 0%, transparent 70%); pointer-events: none;"></div>
   <div style="display: inline-block; background: #00C2A8; color: #0A1628; font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 800; padding: 0.3rem 0.9rem; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.25rem;">Limited Launch Offer</div>
   <h2 style="font-family: 'Inter', sans-serif; font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 900; color: #FFFFFF; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 0.75rem;">50% off your setup fee.<br><span style="color: #00C2A8;">This month only.</span></h2>
-  <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #8A96A3; max-width: 480px; margin: 0 auto 0.75rem; line-height: 1.7;">We're onboarding our first customers and to celebrate, we're cutting our one-time setup fee in half. Get your AI receptionist live for less use code STARTUP50.</p>
+  <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #8A96A3; max-width: 480px; margin: 0 auto 0.75rem; line-height: 1.7;">We're onboarding our first customers and to celebrate, we're cutting our one-time setup fee in half. Get your calls answered and your jobs protected for less — use code STARTUP50.</p>
   <p style="font-family: 'Inter', sans-serif; font-size: 0.875rem; color: #00C2A8; font-weight: 700; margin-bottom: 1.75rem;">Normal setup fee: £99 &nbsp;→&nbsp; <span style="text-decoration: line-through; opacity: 0.5; color: #8A96A3;">£99</span>&nbsp; <span style="font-size: 1.2rem; color: #FFFFFF;">£49 today</span></p>
   <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
     <a href="#pricing" style="background: #00C2A8; color: #0A1628; padding: 0.9rem 2rem; border-radius: 8px; font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1rem; text-decoration: none; display: inline-block;">Claim Offer — Choose Your Plan →</a>
@@ -874,6 +1014,7 @@
   <div class="footer-links">
     <a href="#pricing">Pricing</a>
     <a href="#how">How It Works</a>
+    <a href="#compare">Why Us vs Others</a>
     <a href="#contact">Contact</a>
     <a href="#">Privacy Policy</a>
   </div>
